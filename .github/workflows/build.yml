@@ -24,7 +24,7 @@ jobs:
           mkdir -p ".release/switch/.overlays"
           mkdir -p ".release/switch/.packages/System Tweaks"
           mv .release/ovlmenu.ovl .release/switch/.overlays/ovlmenu.ovl
-          cp -r .release/* ".release/switch/.packages/System Tweaks"
+          cp -r ./* ".release/switch/.packages/System Tweaks"
           zip -r ".release/nx-tweaks-2Manual.zip" ".release/switch"
 
       - name: Compressing Updater Version
