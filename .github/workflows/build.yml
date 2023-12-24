@@ -21,12 +21,15 @@ jobs:
 
       - name: Compressing Manual Version
         run:  |
+          rm -f LICENSE
+          rm -rf images
+          rm -f README.md
           mkdir -p ".release/switch/.overlays"
           mkdir -p ".release/switch/.packages/System Tweaks"
           mv .release/ovlmenu.ovl .release/switch/.overlays/ovlmenu.ovl
           cp -r ./* ".release/switch/.packages/System Tweaks"
           zip -r ".release/nx-tweaks-2Manual.zip" ".release/switch"
-          ls
+          ls .release/
 
       - name: Compressing Updater Version
         run:  |
@@ -34,7 +37,7 @@ jobs:
           mkdir -p ".release/System Tweaks"
           cp -r ./* ".release/System Tweaks"
           zip -r ".release/nx-tweaks-1Updater.zip" ".release/System Tweaks"
-          ls
+          ls .release/
 
       - name: Release
         uses: softprops/action-gh-release@v1
