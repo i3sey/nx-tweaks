@@ -29,7 +29,6 @@ jobs:
           mv .release/ovlmenu.ovl .release/switch/.overlays/ovlmenu.ovl
           cp -r ./* ".release/switch/.packages/System Tweaks"
           zip -r ".release/nx-tweaks-2Manual.zip" ".release/switch"
-          ls .release/
 
       - name: Compressing Updater Version
         run:  |
@@ -37,7 +36,6 @@ jobs:
           mkdir -p ".release/System Tweaks"
           cp -r ./* ".release/System Tweaks"
           zip -r ".release/nx-tweaks-1Updater.zip" ".release/System Tweaks"
-          ls .release/
 
       - name: Release
         uses: softprops/action-gh-release@v1
@@ -45,5 +43,5 @@ jobs:
           draft: true
           generate_release_notes: true
           files: |
-            ".release/nx-tweaks-1Updater.zip"
-            ".release/nx-tweaks-2Manual.zip"
+            .release/nx-tweaks-1Updater.zip
+            .release/nx-tweaks-2Manual.zip
