@@ -37,14 +37,13 @@ jobs:
           cp -r ./* ".updater/"
           cd .updater
           zip -r "files.zip" *
-          ls
           cd ..
           mkdir -p ".updater/System Tweaks"
           mv .updater/files.zip ".updater/System Tweaks/files.zip"
           echo ";version='Open to init'" > ".updater/System Tweaks/config.ini"
-          printf "[Init]\ncatch_errors\ndelete '/switch/.packages/files.zip'\nmove '/switch/.packages/System Tweaks/files.zip' '/switch/.packages/files.zip'\ndelete '/switch/.packages/System Tweaks/'\nunzip '/switch/.packages/files.zip' '/switch/.packages/System Tweaks/'\ndelete '/switch/.packages/files.zip'" > .updater/System Tweaks/init.ini
-          ls
-          zip -r ".release/nx-tweaks-1Updater.zip" ".updater/System Tweaks/"
+          echo $"[Init]\ncatch_errors\ndelete '/switch/.packages/files.zip'\nmove '/switch/.packages/System Tweaks/files.zip' '/switch/.packages/files.zip'\ndelete '/switch/.packages/System Tweaks/'\nunzip '/switch/.packages/files.zip' '/switch/.packages/System Tweaks/'\ndelete '/switch/.packages/files.zip'" > .updater/System Tweaks/init.ini
+          cd .updater
+          zip -r "nx-tweaks-1Updater.zip" "System Tweaks/"
 
       - name: Release
         uses: softprops/action-gh-release@v1
@@ -52,5 +51,5 @@ jobs:
           draft: true
           generate_release_notes: true
           files: |
-            .release/nx-tweaks-1Updater.zip
+            .updater/nx-tweaks-1Updater.zip
             .release/nx-tweaks-2Manual.zip
