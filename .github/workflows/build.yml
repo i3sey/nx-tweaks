@@ -15,22 +15,24 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Downloading latest Uberhand
-        run: wget "https://github.com/efosamark/Uberhand-Overlay/releases/latest/download/ovlmenu.ovl" 
+        run: |
+          mkdir .release/
+          wget -P .release/ "https://github.com/efosamark/Uberhand-Overlay/releases/latest/download/ovlmenu.ovl" 
 
       - name: Compressing Manual Version
         run:  |
-          mkdir -p "/switch/.overlays"
-          mkdir -p "/switch/.packages/System Tweaks"
-          mv ovlmenu.ovl /switch/.overlays/ovlmenu.ovl
-          cp -r ./* "/switch/.packages/System Tweaks"
-          zip -r "nx-tweaks-2Manual.zip" "switch"
+          mkdir -p ".release/switch/.overlays"
+          mkdir -p ".release/switch/.packages/System Tweaks"
+          mv .release/ovlmenu.ovl .release/switch/.overlays/ovlmenu.ovl
+          cp -r .release/* ".release/switch/.packages/System Tweaks"
+          zip -r ".release/nx-tweaks-2Manual.zip" ".release/switch"
 
       - name: Compressing Updater Version
         run:  |
-          rm -rf switch
-          mkdir -p "System Tweaks"
-          cp -r ./* "System Tweaks"
-          zip -r "nx-tweaks-1Updater.zip" "System Tweaks"
+          rm -rf .release/switch
+          mkdir -p ".release/System Tweaks"
+          cp -r ./* ".release/System Tweaks"
+          zip -r ".release/nx-tweaks-1Updater.zip" ".release/System Tweaks"
 
       - name: Release
         uses: softprops/action-gh-release@v1
@@ -38,5 +40,5 @@ jobs:
           draft: true
           generate_release_notes: true
           files: |
-            "nx-tweaks-1Updater.zip"
-            "nx-tweaks-2Manual.zip"
+            ".release/nx-tweaks-1Updater.zip"
+            ".release/nx-tweaks-2Manual.zip"
