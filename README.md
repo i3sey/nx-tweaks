@@ -1,13 +1,7 @@
 # nx-tweaks
 
-Uberhand package for tuning Atmosphere CFW and other NX software
+Uberhand package for tuning Atmosphere CFW and other CFW stuff
 
-<details>
-  
-  <summary>Screenshot</summary>
-  
-  ![Screenshot](/images/main.jpg)
-</details>
 
 ## Features:
 
