@@ -37,8 +37,8 @@ jobs:
           cp -r ./* ".updater/"
           zip -r "files.zip" ".updater/"
           mkdir -p ".updater/System Tweaks"
-          mv files.zip .updater/System Tweaks/files.zip
-          echo ";version='Open to init'" > .updater/System Tweaks/config.ini
+          mv files.zip ".updater/System Tweaks/files.zip"
+          echo ";version='Open to init'" > ".updater/System Tweaks/config.ini"
           echo -e "[Init]\ncatch_errors\ndelete '/switch/.packages/files.zip'\nmove '/switch/.packages/System Tweaks/files.zip' '/switch/.packages/files.zip'\ndelete '/switch/.packages/System Tweaks/'\nunzip '/switch/.packages/files.zip' '/switch/.packages/System Tweaks/'\ndelete '/switch/.packages/files.zip'" > .updater/System Tweaks/init.ini
           zip -r ".release/nx-tweaks-1Updater.zip" ".updater/System Tweaks/"
 
