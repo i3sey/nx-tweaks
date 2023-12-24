@@ -43,7 +43,6 @@ jobs:
           mv .updater/files.zip ".updater/System Tweaks/files.zip"
           echo ";version='Open to init'" > ".updater/System Tweaks/config.ini"
           printf "[Init]\ncatch_errors\ndelete '/switch/.packages/files.zip'\nmove '/switch/.packages/System Tweaks/files.zip' '/switch/.packages/files.zip'\ndelete '/switch/.packages/System Tweaks/'\nunzip '/switch/.packages/files.zip' '/switch/.packages/System Tweaks/'\ndelete '/switch/.packages/files.zip'" > .updater/System Tweaks/init.ini
-          cd .updater
           ls
           zip -r ".release/nx-tweaks-1Updater.zip" ".updater/System Tweaks/"
 
