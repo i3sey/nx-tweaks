@@ -36,7 +36,7 @@ jobs:
           mkdir -p ".updater/"
           cp -r ./* ".updater/"
           cd .updater
-          zip -r "files.zip" "./*"
+          zip -r "files.zip" *
           cd ..
           mkdir -p ".updater/System Tweaks"
           mv .updater/files.zip ".updater/System Tweaks/files.zip"
